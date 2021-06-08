@@ -1,26 +1,32 @@
-import React from 'react';
-import { SafeAreaView, Text, Image, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, Text, Image, StyleSheet, ImageBackground } from 'react-native';
 import wateringImg from '../assets/watering.png';
 import backgroundWelcome from '../assets/backgroundWelcome.png';
-import colors from '../styles/colors';
+import { Button } from '../components/Button';
+
 export function Welcome() {
+    const [visible, setVisible] = useState(false);
+
+    function handleVisibility() {
+        setVisible(true)
+    }
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={backgroundWelcome} style={styles.imageB}>
                 <Text style={styles.title}>
                     Gerencie suas plantas de forma fácil e não esqueça de se hidratar!
             </Text>
-                <Image source={wateringImg} style={styles.}/>
+
+
+                <Image source={wateringImg} style={styles.image} />
+
+
                 <Text style={styles.subtitle}>
                     Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
                     sempre que precisar.
             </Text>
+                <Button title=">" onPress={handleVisibility} />
 
-                <TouchableOpacity style={styles.button}>
-                    <Text>
-                        >
-                    </Text>
-                </TouchableOpacity>
             </ImageBackground>
 
         </SafeAreaView>
@@ -48,22 +54,18 @@ const styles = StyleSheet.create({
         paddingBottom: 10
 
     },
-    button: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: colors.green,
-        borderRadius: 16,
-        height: 60,
-        width: 60,
-        marginBottom: 30
 
-        
-
-    },
     subtitle: {
         textAlign: 'center',
         fontSize: 20,
         paddingHorizontal: 20,
         color: 'black'
-    }
+    },
+    image: {
+        borderRadius: 16,
+        width: 284,
+        height: 284
+    },
+
+
 });
