@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, Image, StyleSheet, ImageBackground } from 'react-native';
+import { SafeAreaView, Text, Image, StyleSheet, ImageBackground, Dimensions } from 'react-native';
 import wateringImg from '../assets/watering.png';
 import backgroundWelcome from '../assets/backgroundWelcome.png';
 import { Button } from '../components/Button';
+import fonts from '../styles/fonts';
 
 export function Welcome() {
     const [visible, setVisible] = useState(false);
@@ -18,7 +19,7 @@ export function Welcome() {
             </Text>
 
 
-                <Image source={wateringImg} style={styles.image} />
+                <Image source={wateringImg} style={styles.image} resizeMode="contain" />
 
 
                 <Text style={styles.subtitle}>
@@ -51,20 +52,22 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'black',
         margin: 38,
-        paddingBottom: 10
+        paddingBottom: 10,
+        fontFamily: fonts.heading,
+        lineHeight: 38
 
     },
 
     subtitle: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 22,
         paddingHorizontal: 20,
-        color: 'black'
+        color: 'black',
+        fontFamily: fonts.text
     },
     image: {
         borderRadius: 16,
-        width: 284,
-        height: 284
+        height: Dimensions.get('window').width*0.6
     },
 
 
