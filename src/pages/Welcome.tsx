@@ -4,19 +4,24 @@ import wateringImg from '../assets/watering.png';
 import backgroundWelcome from '../assets/backgroundWelcome.png';
 import { Button } from '../components/Button';
 import fonts from '../styles/fonts';
+import { useNavigation } from '@react-navigation/native';
 
 export function Welcome() {
-    const [visible, setVisible] = useState(false);
+    const navigation = useNavigation();
 
-    function handleVisibility() {
+
+
+    const [visible, setVisible] = useState(false);
+    function handleStart() {
         setVisible(true)
+        navigation.navigate('UserIdentification');
     }
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={backgroundWelcome} style={styles.imageB}>
                 <Text style={styles.title}>
-                    Gerencie suas plantas de forma fácil e não esqueça de se hidratar!
-            </Text>
+                    Gerencie seu tempo de forma fácil e não esqueça mais dos seus compromissos e de se hidratar!
+                </Text>
 
 
                 <Image source={wateringImg} style={styles.image} resizeMode="contain" />
@@ -25,8 +30,8 @@ export function Welcome() {
                 <Text style={styles.subtitle}>
                     Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
                     sempre que precisar.
-            </Text>
-                <Button title=">" onPress={handleVisibility} />
+                </Text>
+                <Button title=">" onPress={handleStart} />
 
             </ImageBackground>
 
@@ -47,11 +52,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        fontSize: 32,
+        fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
         color: 'black',
-        margin: 38,
+        margin: 35,
         paddingBottom: 10,
         fontFamily: fonts.heading,
         lineHeight: 38

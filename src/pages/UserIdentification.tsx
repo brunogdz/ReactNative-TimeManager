@@ -3,11 +3,12 @@ import colors from '../styles/colors';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import fonts from '../styles/fonts';
 import { ButtonNext } from '../components/ButtonNext';
-
+import { useNavigation } from '@react-navigation/core';
 export function UserIdentification() {
     const [isFocused, setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
     const [name, setName] = useState<string>();
+    const navigation = useNavigation();
     function handleInputBlur() {
         setIsFocused(false);
         setIsFilled(!!name)
@@ -22,6 +23,9 @@ export function UserIdentification() {
         setName(value);
     }
 
+    function handleSubmit() {
+        navigation.navigate('Confirmation');
+    }
     return (
         <SafeAreaView style={styles.container}>
             <KeyboardAvoidingView
@@ -34,7 +38,7 @@ export function UserIdentification() {
                         <View style={styles.header}>
                             <Text style={styles.emoji}>
                                 {isFilled ? '😎👍' : '😀'}
-                                
+
                             </Text>
                             <Text style={styles.title}>
                                 Como posso te chamar?
@@ -53,7 +57,7 @@ export function UserIdentification() {
                             onChangeText={handleInputChange}
                         />
                         <View style={styles.footer}>
-                            <ButtonNext />
+                            <ButtonNext title="Confirmar" onPress={handleSubmit}/>
                         </View>
 
                     </View>
