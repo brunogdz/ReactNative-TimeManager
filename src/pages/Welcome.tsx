@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     image: {
         borderRadius: 16,
-        height: Dimensions.get('window').width*0.6
+        height: Dimensions.get('window').width * 0.6
     },
 
 
