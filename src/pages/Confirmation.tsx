@@ -18,7 +18,7 @@ export function Confirmation() {
                 </Text>
 
                 <Text style={styles.subtitle}>
-                    Agora estamos dando um passo à frete para a sua organização!
+                    Agora estamos dando um passo à frente para a sua organização!
                 </Text>
 
                 <View style={styles.footer}>
