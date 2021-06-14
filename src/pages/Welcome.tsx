@@ -14,7 +14,8 @@ export function Welcome() {
     const [visible, setVisible] = useState(false);
     function handleStart() {
         setVisible(true)
-        navigation.navigate('UserIdentification');
+        // navigation.navigate('UserIdentification');
+        navigation.navigate('SignUp');
     }
     return (
         <SafeAreaView style={styles.container}>
