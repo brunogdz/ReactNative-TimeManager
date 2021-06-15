@@ -24,7 +24,7 @@ export function SignUp() {
         setPassword(value);
     }
     function handleSubmit() {
-        navigation.navigate('SignIn')
+        navigation.navigate('UserIdentification')
     }
 
     return (
