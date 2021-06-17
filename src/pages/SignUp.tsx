@@ -6,7 +6,7 @@ import backgroundRegister from '../assets/backgroundSignUp.png'
 import fonts from '../styles/fonts';
 import colors from '../styles/colors';
 import { ButtonNext } from '../components/ButtonNext';
-
+import IconT from '../assets/iconTimer.png'
 export function SignUp() {
     const navigation = useNavigation();
     function handleLoginTo() {
@@ -30,11 +30,11 @@ export function SignUp() {
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={backgroundRegister} style={styles.imageBack}>
-                <Text style={styles.title}>
-                    Seja bem-vindo(a)
-                </Text>
+               
                 <View style={styles.content}>
-
+                <Image
+                        source={IconT} style={styles.image}
+                    />
 
 
                     <TextInput style={styles.input}
@@ -136,8 +136,12 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     footer2: {
-        paddingTop: 50,
+        paddingTop: 10,
         width: '100%'
+    },
+    image: {
+        height: 128,
+        width: 128,
     }
 })
 
