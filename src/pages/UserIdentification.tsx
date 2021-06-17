@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import colors from '../styles/colors';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Platform } from 'react-native';
 import fonts from '../styles/fonts';
 import { ButtonNext } from '../components/ButtonNext';
 import { useNavigation } from '@react-navigation/core';
@@ -28,41 +28,44 @@ export function UserIdentification() {
     }
     return (
         <SafeAreaView style={styles.container}>
+
             <KeyboardAvoidingView
                 style={styles.container}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
-                <View style={styles.content}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.content}>
 
-                    <View style={styles.form}>
-                        <View style={styles.header}>
-                            <Text style={styles.emoji}>
-                                {isFilled ? '😎👍' : '😀'}
+                        <View style={styles.form}>
+                            <View style={styles.header}>
+                                <Text style={styles.emoji}>
+                                    {isFilled ? '😎👍' : '😀'}
 
-                            </Text>
-                            <Text style={styles.title}>
-                                Como posso te chamar?
-                            </Text>
-                        </View>
+                                </Text>
+                                <Text style={styles.title}>
+                                    Como posso te chamar?
+                                </Text>
+                            </View>
 
 
-                        <TextInput
-                            style={[
-                                styles.input,
-                                (isFocused || isFilled) && { borderColor: colors.green }
+                            <TextInput
+                                style={[
+                                    styles.input,
+                                    (isFocused || isFilled) && { borderColor: colors.green }
 
-                            ]} placeholder="Digite aqui o seu nome ou nick"
-                            onBlur={handleInputBlur}
-                            onFocus={handleInputFocus}
-                            onChangeText={handleInputChange}
-                        />
-                        <View style={styles.footer}>
-                            <ButtonNext title="Confirmar" onPress={handleSubmit}/>
+                                ]} placeholder="Digite aqui o seu nome ou nick"
+                                onBlur={handleInputBlur}
+                                onFocus={handleInputFocus}
+                                onChangeText={handleInputChange}
+                            />
+                            <View style={styles.footer}>
+                                <ButtonNext title="Confirmar" onPress={handleSubmit} />
+                            </View>
+
                         </View>
 
                     </View>
-
-                </View>
+                </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
 
         </SafeAreaView>

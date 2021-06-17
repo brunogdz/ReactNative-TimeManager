@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, Image, StyleSheet, ImageBackground, TextInput, Dimensions } from 'react-native'
+import { SafeAreaView, Text, View, Image, StyleSheet, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard,Dimensions } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { Button } from '../components/Button';
 import backgroundRegister from '../assets/backgroundSignUp.png'
@@ -29,54 +29,56 @@ export function SignUp() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ImageBackground source={backgroundRegister} style={styles.imageBack}>
-               
-                <View style={styles.content}>
-                <Image
-                        source={IconT} style={styles.image}
-                    />
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <ImageBackground source={backgroundRegister} style={styles.imageBack}>
 
-
-                    <TextInput style={styles.input}
-                        placeholder="Digite o seu nome"
-                        value={name}
-                        autoCapitalize={'sentences'}
-                        onChangeText={text => setName(text)}
-                    />
-
-                    <View style={styles.email}>
-                        <TextInput style={
-                            styles.input
-                        }
-                            placeholder="Digite o seu email"
-                            value={email}
-
-                            onChangeText={text => setEmail(text)}
+                    <View style={styles.content}>
+                        <Image
+                            source={IconT} style={styles.image}
                         />
-                    </View>
-                    <View style={styles.inputPassword}>
-                        <TextInput style={[
-                            styles.input,
-                            (isFilled || security) && {}
-                        ]}
-                            secureTextEntry={true}
-                            placeholder="Digite sua senha"
-                            onChangeText={handleInputChange}
 
+
+                        <TextInput style={styles.input}
+                            placeholder="Digite o seu nome"
+                            value={name}
+                            autoCapitalize={'sentences'}
+                            onChangeText={text => setName(text)}
                         />
+
+                        <View style={styles.email}>
+                            <TextInput style={
+                                styles.input
+                            }
+                                placeholder="Digite o seu email"
+                                value={email}
+
+                                onChangeText={text => setEmail(text)}
+                            />
+                        </View>
+                        <View style={styles.inputPassword}>
+                            <TextInput style={[
+                                styles.input,
+                                (isFilled || security) && {}
+                            ]}
+                                secureTextEntry={true}
+                                placeholder="Digite sua senha"
+                                onChangeText={handleInputChange}
+
+                            />
+                        </View>
+                        <View style={styles.footer1}>
+                            <ButtonNext title="Cadastrar" onPress={handleSubmit} />
+                        </View>
+                        <View style={styles.footer2}>
+                            <ButtonNext title="Já possuo conta" onPress={handleLoginTo} />
+                        </View>
                     </View>
-                    <View style={styles.footer1}>
-                        <ButtonNext title="Cadastrar" onPress={handleSubmit} />
-                    </View>
-                    <View style={styles.footer2}>
-                        <ButtonNext title="Já possuo conta" onPress={handleLoginTo}/>
-                    </View>
-                </View>
 
 
 
 
-            </ImageBackground>
+                </ImageBackground>
+            </TouchableWithoutFeedback>
         </SafeAreaView>
     )
 }
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.text
 
     },
-    
+
     email: {
 
         justifyContent: "center",

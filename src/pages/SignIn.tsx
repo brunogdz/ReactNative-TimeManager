@@ -3,7 +3,7 @@ import backgroundRegister from '../assets/backgroundSignUp.png'
 import fonts from '../styles/fonts';
 import colors from '../styles/colors';
 import { ButtonNext } from '../components/ButtonNext';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, ImageBackground, Image, Dimensions } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, ImageBackground, Image, Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import IconT from '../assets/iconTimer.png'
 
@@ -21,47 +21,51 @@ export function SignIn() {
         setPassword(value);
     }
     return (
+
+
+
         <SafeAreaView style={styles.container}>
-            <ImageBackground source={backgroundRegister} style={styles.imageBack}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <ImageBackground source={backgroundRegister} style={styles.imageBack}>
 
-                <View style={styles.content}>
-                    <Image
-                        source={IconT} style={styles.image}
-                    />
-                    <Text style={styles.title}>
-                        Bem-vindo(a) de volta! Skéci fí! 🙌✌
-                    </Text>
-                    <View style={styles.email}>
-                        <TextInput style={
-                            styles.input
-                        }
-                            placeholder="Digite o seu email"
-                            value={email}
-
-                            onChangeText={text => setEmail(text)}
+                    <View style={styles.content}>
+                        <Image
+                            source={IconT} style={styles.image}
                         />
+                        <Text style={styles.title}>
+                            Bem-vindo(a) de volta! 🙌✌
+                        </Text>
+                        <View style={styles.email}>
+                            <TextInput style={
+                                styles.input
+                            }
+                                placeholder="Digite o seu email"
+                                value={email}
+
+                                onChangeText={text => setEmail(text)}
+                            />
+                        </View>
+                        <View style={styles.inputPassword}>
+                            <TextInput style={[
+                                styles.input,
+                                (isFilled || security) && {}
+                            ]}
+                                secureTextEntry={true}
+                                placeholder="Digite sua senha"
+                                onChangeText={handleInputChange}
+
+                            />
+                        </View>
+                        <View style={styles.footer1}>
+                            <ButtonNext title="Acessar" onPress={handleSubmit} />
+                        </View>
+
                     </View>
-                    <View style={styles.inputPassword}>
-                        <TextInput style={[
-                            styles.input,
-                            (isFilled || security) && {}
-                        ]}
-                            secureTextEntry={true}
-                            placeholder="Digite sua senha"
-                            onChangeText={handleInputChange}
-
-                        />
-                    </View>
-                    <View style={styles.footer1}>
-                        <ButtonNext title="Acessar" onPress={handleSubmit} />
-                    </View>
-
-                </View>
 
 
 
-            </ImageBackground>
-
+                </ImageBackground>
+            </TouchableWithoutFeedback>
         </SafeAreaView>
     )
 }
@@ -115,10 +119,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     inputPassword: {
-
     },
     footer1: {
-        paddingTop: 10,
+        paddingTop: 15,
         width: '100%',
     },
 })
