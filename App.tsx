@@ -19,7 +19,6 @@ export default function App() {
   if (!fontsLoaded)
     return <AppLoading />
 
-
   return (
     <Routes/>
   );

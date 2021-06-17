@@ -1,9 +1,16 @@
 import React from 'react';
-import colors from '../styles/colors';
+import backgroundRegister from '../assets/backgroundSignUp.png'
 import fonts from '../styles/fonts';
+import colors from '../styles/colors';
+import { ButtonNext } from '../components/ButtonNext';
 import { SafeAreaView, StyleSheet, Text, View, TextInput,  } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export function SignIn() {
+    const navigation = useNavigation();
+    function handleLoginTo() {
+        navigation.navigate('SignIn')
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View >
