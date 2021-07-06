@@ -19,3 +19,6 @@ To do
 [To Do app inspiração](https://www.youtube.com/watch?v=0c0v_40MPq8&ab_channel=ToThePointCode)
 
 [App completo inspiração 10hs](https://www.youtube.com/watch?v=npe3Wf4tpSg&ab_channel=CryceTruly)
+
+To Do:
+Validar email no Cadastro e fazer as outras páginas para o Loading Page redirecionar
