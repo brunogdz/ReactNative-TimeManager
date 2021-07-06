@@ -7,6 +7,7 @@ import { UserIdentification } from '../pages/UserIdentification';
 import { Confirmation } from '../pages/Confirmation';
 import {SignUp} from '../pages/SignUp';
 import {SignIn} from '../pages/SignIn';
+import {LoadingScreen} from '../pages/LoadingScreen';
 
 const stackRoutes = createStackNavigator();
 
@@ -24,6 +25,7 @@ const AppRoutes : React.FC = () => (
         <stackRoutes.Screen name="Confirmation" component={Confirmation} />
         <stackRoutes.Screen name="SignUp" component={SignUp} />
         <stackRoutes.Screen name="SignIn" component={SignIn} />
+        <stackRoutes.Screen name="LoadingScreen" component={LoadingScreen} />
 
     </stackRoutes.Navigator>
 )

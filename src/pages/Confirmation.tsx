@@ -5,13 +5,24 @@ import { ButtonNext } from '../components/ButtonNext';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
+import LottieView from 'lottie-react-native';
+import { useNavigation } from '@react-navigation/core';
+
+import Nice from '../assets/checkNice.json'
 export function Confirmation() {
+    const navigation = useNavigation();
+    function handleStartLoading() {
+        navigation.navigate('LoadingScreen');
+    }
     return (
         <SafeAreaView style={styles.container}>
+
+            
+
+            
             <View style={styles.content}>
-                <Text style={styles.emoji}>
-                    😉✍
-                </Text>
+
+                <LottieView source={Nice} autoPlay={true} loop={true} style={styles.gif}/>
 
                 <Text style={styles.title}>
                     Beleza! Seja bem-vindo(a)
@@ -22,7 +33,7 @@ export function Confirmation() {
                 </Text>
 
                 <View style={styles.footer}>
-                    <ButtonNext title="Começar" />
+                    <ButtonNext title="Começar" onPress={handleStartLoading} />
                 </View>
             </View>
         </SafeAreaView>
@@ -42,9 +53,14 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 30
     },
-    emoji: {
-        fontSize: 70,
+    gif:{
+        width: 300,
+        height: 300,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingBottom: 30,
     },
+    
     subtitle: {
         fontFamily: fonts.text,
         textAlign: 'center',
