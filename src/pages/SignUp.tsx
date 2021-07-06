@@ -12,6 +12,10 @@ export function SignUp() {
     function handleLoginTo() {
         navigation.navigate('SignIn')
     }
+    function validateEmail(email: string) {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
 
     const [name, setName] = useState("");
     const changeName = () => { }
@@ -19,6 +23,14 @@ export function SignUp() {
     const [security, setSecurity] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
     const [email, setEmail] = useState("")
+    function handleEmail(value: string){
+        setIsFilled(!!value);
+        if (validateEmail(value)){
+            setEmail(value)
+        }
+        setEmail(" ")
+    }
+
     function handleInputChange(value: string) {
         setIsFilled(!!value);
         setPassword(value);
@@ -50,9 +62,9 @@ export function SignUp() {
                                 styles.input
                             }
                                 placeholder="Digite o seu email"
-                                value={email}
+                                
 
-                                onChangeText={text => setEmail(text)}
+                                onChangeText={handleEmail}
                             />
                         </View>
                         <View style={styles.inputPassword}>
