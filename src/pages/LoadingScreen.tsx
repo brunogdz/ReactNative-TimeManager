@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { SafeAreaView, StyleSheet, Dimensions, View, Animated, TouchableOpacity } from 'react-native';
 
-import Load from '../assets/load.json';
+import Load from '../assets/loading.json';
 import LottieView from 'lottie-react-native';
 import { useNavigation } from '@react-navigation/core';
 
@@ -10,7 +10,7 @@ export function LoadingScreen() {
     function handleStartLoading() {
         setTimeout(() => {
             navigation.navigate('Confirmation');
-        }, 5000);
+        }, 10500);
     }
 
 
@@ -19,7 +19,7 @@ export function LoadingScreen() {
         <SafeAreaView style={styles.container}>
             <View style={styles.content} ref={handleStartLoading}>
 
-                <LottieView source={Load}  autoPlay={true} loop={false} />
+                <LottieView source={Load}  autoPlay={true} loop={true}  speed={1.5}/>
 
 
             </View>
